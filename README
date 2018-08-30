@@ -1,6 +1,18 @@
 Madeleine Schwartz
 July 8th 2018
 
+Each legislative employee's first name, last name, division, and position was 
+collected from the Illinois State Comptroller's Salary Database. There are 
+over 1300 people employed by the Illinois Legislature. The most popular 
+baby names for boys and girls from 1950 to 2010 were collected from the 
+federal government's social security website. Any names that appeared in both 
+the boy's and girl's name list were considered gender neutral names and removed 
+from the gender-name database. Each employee was then assigned a gender by a 
+program, and any remaining "unknown" genders were evaluated on a case by case 
+basis. I determined the gender of the remaining individuals by searching for any 
+records they may have on the internet. In the end, 59 employees had unknown 
+genders, most of whom were contactual workers.
+
 Files:
 
         results.txt                 stored results of getGender program
@@ -14,11 +26,10 @@ Files:
         ilsalaries.py               python data scraper
         data-analysis.xlsx          data analysis and findings
     
-
 Compile:
 
         make getGender
 
 Run:
-        python ilsalaires.py
-        ./getGender new-employees.csv
+        python ilsalaries.py                    scrapes data
+        ./getGender new-employees.csv           analyzes data
