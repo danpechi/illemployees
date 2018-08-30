@@ -1,0 +1,24 @@
+Madeleine Schwartz
+July 8th 2018
+
+Files:
+
+        results.txt                 stored results of getGender program
+        results.csv                 stored results of getGender program
+        new-employees.csv           input for getGender program
+        new-baby-names.csv          input for getGender program
+        Makefile                    makefile for getGender program
+        getGender.cpp               getGender implementation
+        getGender.h                 getGender interface
+        main.cpp                    driver for getGender program
+        ilsalaries.py               python data scraper
+        data-analysis.xlsx          data analysis and findings
+    
+
+Compile:
+
+        make getGender
+
+Run:
+        python ilsalaires.py
+        ./getGender new-employees.csv

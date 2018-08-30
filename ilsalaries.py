@@ -7,6 +7,7 @@
 
 # import methods and libraries
 import urllib
+import sys
 
 # # # # # # # # # # # # # #
 # Define Helper functions #
@@ -32,13 +33,14 @@ def parseProfile(profile):
         for line in profile:
                 if '<td>' in line:
                         info = line
-                        info = info.strip(' ')   
+                        if ',' in info: info = info.replace(' ', '')   
+                        info = info.strip(' ')
                         info = info.strip('<td>')
                         # remove windows newline characters
                         info = info[:-2] 
                         info = removeSuffix(info, '</td>')
-                        print(info),
-                        if ',' not in info: print(','),
+                        sys.stdout.write(info)
+                        if ',' not in info: sys.stdout.write(',')
                 if '</tbody>' in line:
                         return  
         return
@@ -46,13 +48,19 @@ def parseProfile(profile):
 # # # # # # # # # # # # # #
 #          Main           #
 # # # # # # # # # # # # # #
-init_url = 'https://illinoiscomptroller.gov/financial-data/state-expenditures/employee-salary-database/?Issue_Year=2018&Agency=LEGISLATIVE&EmpId=&Last_Name=&Position=0'
+
+
+init_url = ( 'https://illinoiscomptroller.gov/financial-data/'
+             'state-expenditures/employee-salary-database/'
+             '?Issue_Year=2018&Agency=LEGISLATIVE&EmpId=&'
+             'Last_Name=&Position=0'
+           )
 
 # open webpage
 page = urllib.urlopen(init_url)
 
 # print column headings
-print("LAST_NAME, FIRST_NAME, DIVISON, POSITION")
+print("LAST_NAME,FIRST_NAME,DIVISON,POSITION")
 
 # declare array to store other url paths
 paths = []
@@ -86,7 +94,7 @@ for link in paths:
         profile = urllib.urlopen(link)
         parseProfile(profile)
         profile.close()
-        print positions[i],
+        sys.stdout.write(positions[i])
         i += 1
 
 exit()
